@@ -11,17 +11,18 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: '导航1',
+    name: '图书管理',
     component: Index,
+    redirect: '/pageOne',
     children: [
       {
         path: '/pageOne',
-        name: '页面1',
+        name: '图书查询',
         component: PageOne
       },
       {
         path: '/pageTwo',
-        name: '页面2',
+        name: '图书增加',
         component: PageTwo
       }
     ]
