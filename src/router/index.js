@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageOne from "../views/PageOne";
 import PageTwo from "../views/PageTwo";
-import PageThree from "../views/PageThree";
+import PaymentUpdate from "../views/PaymentUpdate";
 import PageFour from "../views/PageFour";
 import Index from "../views/Index";
 
@@ -13,6 +13,7 @@ Vue.use(VueRouter)
     path: '/',
     name: '图书管理',
     component: Index,
+    show: true,
     redirect: '/pageOne',
     children: [
       {
@@ -27,6 +28,12 @@ Vue.use(VueRouter)
       }
     ]
   },
+  {
+    path: '/update',
+    component: PaymentUpdate,
+    show: false
+  }
+  /*,
   {
     path: '/navigation',
     name: '导航2',
@@ -43,7 +50,7 @@ Vue.use(VueRouter)
         component: PageFour
       }
     ]
-  }/*,
+  },
   {
     path: '/about',
     name: 'About',

@@ -10,7 +10,7 @@
                   </el-submenu>
                 </el-menu>-->
                 <el-menu router :default-openeds="['0','1']">
-                    <el-submenu v-for="(item, index) in $router.options.routes" :index="index+''">
+                    <el-submenu v-for="(item, index) in $router.options.routes" :index="index+''" v-if="item.show">
                         <template slot="title"><i class="el-icon-message"></i>{{item.name}}</template>
                         <el-menu-item v-for="(item2, index2) in item.children" :index="item2.path"
                         :class="$route.path==item2.path?'is-active':''">
@@ -20,7 +20,7 @@
                 </el-menu>
             </el-aside>
 
-            <el-container>
+            <!--<el-container>
                 <el-header style="text-align: right; font-size: 12px">
                     <el-dropdown>
                         <i class="el-icon-setting" style="margin-right: 15px"></i>
@@ -33,6 +33,11 @@
                     <span>王小虎</span>
                 </el-header>
 
+                <el-main>
+                    <router-view></router-view>
+                </el-main>
+            </el-container>-->
+            <el-container>
                 <el-main>
                     <router-view></router-view>
                 </el-main>

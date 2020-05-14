@@ -3,7 +3,7 @@
         <el-table
                 :data="tableData"
                 border
-                style="width: 100%">
+                style="width: 60%;margin: auto">
             <el-table-column
                     fixed
                     prop="id"
@@ -20,13 +20,13 @@
                     label="操作"
                     width="100">
                 <template slot-scope="scope">
-                    <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-                    <el-button type="text" size="small">编辑</el-button>
+                    <el-button @click="edit(scope.row)" type="text" size="small">修改</el-button>
+                    <el-button @click="deleteById(scope.row)" type="text" size="small">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
 
-        <el-pagination
+        <el-pagination style="width: 60%;margin: auto"
                 background
                 layout="prev, pager, next"
                 page-size="5"
@@ -38,8 +38,23 @@
 <script>
     export default {
         methods: {
-            handleClick(row) {
-                console.log(row);
+            edit(row) {
+                this.$router.push({
+                    path: '/update',
+                    query: {
+                        id: row.id
+                    }
+                })
+            },
+            deleteById(row) {
+                axios.delete('http://localhost:8181/payment/deleteById/'+row.id).then(resp => {
+                    this.$alert('这是一段内容', 'OK', {
+                        confirmButtonText: '确定',
+                        callback: action => {
+                            window.location.reload()
+                        }
+                    });
+                })
             },
             page(currentPage) {
                 // alert(currentPage)
