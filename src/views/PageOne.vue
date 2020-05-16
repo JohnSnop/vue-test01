@@ -3,12 +3,12 @@
         <el-table
                 :data="tableData"
                 border
-                style="width: 60%;margin: auto">
+                style="width: 850px;margin: auto">
             <el-table-column
                     fixed
                     prop="id"
                     label="编号"
-                    width="150">
+                    width="250">
             </el-table-column>
             <el-table-column
                     prop="serial"
@@ -16,9 +16,9 @@
                     width="300">
             </el-table-column>
             <el-table-column
-                    fixed="right"
+
                     label="操作"
-                    width="100">
+                    width="300">
                 <template slot-scope="scope">
                     <el-button @click="edit(scope.row)" type="text" size="small">修改</el-button>
                     <el-button @click="deleteById(scope.row)" type="text" size="small">删除</el-button>
@@ -29,7 +29,7 @@
         <el-pagination style="width: 60%;margin: auto"
                 background
                 layout="prev, pager, next"
-                page-size="5"
+                :page-size="5"
                 :total="total" @current-change="page">
         </el-pagination>
     </div>
